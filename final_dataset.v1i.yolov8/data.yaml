@@ -1,0 +1,14 @@
+path: c:/Users/Admin/Desktop/Projects/Defect Detection/final_dataset.v1i.yolov8
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 4
+names: ['BROKEN', 'Empty', 'OK', 'strip']
+
+roboflow:
+  workspace: alzaraan
+  project: final_dataset-hsvwf
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/alzaraan/final_dataset-hsvwf/dataset/1

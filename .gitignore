@@ -1,0 +1,63 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.so
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+logs/
+
+# ML / YOLO outputs
+runs/
+Training/runs/
+
+# DVC live artifacts
+Training/dvclive/
+
+# Model weights and large binaries
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# Optional: ignore local dataset copies and exports
+# Uncomment if you do not want to version dataset files
+# final_dataset.v1i.yolov8/
+
+# Dataset artifacts (generated/large; keep out of git)
+final_dataset.v1i.yolov8/train/labels/
+final_dataset.v1i.yolov8/valid/images/
+final_dataset.v1i.yolov8/valid/labels/
+final_dataset.v1i.yolov8/**/labels.cache
+
+# Environment files
+.env
+.env.*
+!.env.example
