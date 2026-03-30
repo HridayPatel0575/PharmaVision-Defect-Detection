@@ -61,3 +61,6 @@ final_dataset.v1i.yolov8/**/labels.cache
 .env
 .env.*
 !.env.example
+
+# ArchitectIQ graph cache
+.architectiq/
