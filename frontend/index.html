@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PharmaVision - Medicine Detection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">PharmaVision</p>
+      <h1>Medicine Defect Detection</h1>
+      <p class="subtitle">Upload an image or use your live camera feed to run detection.</p>
+      <div class="model-info">
+        <span class="badge">Model: YOLOv8n</span>
+        <span class="badge">mAP@50: 89.35%</span>
+        <span class="badge">mAP@50-95: 55.54%</span>
+      </div>
+    </header>
+
+    <section class="panel controls-panel">
+      <div class="mode-switch" role="tablist" aria-label="Input mode">
+        <button class="mode-btn active" id="uploadTab" data-mode="upload" role="tab" aria-selected="true">Upload Image</button>
+        <button class="mode-btn" id="cameraTab" data-mode="camera" role="tab" aria-selected="false">Live Camera</button>
+      </div>
+
+      <div class="field-grid">
+        <label class="field">
+          API Endpoint
+          <input id="apiEndpoint" type="text" value="http://127.0.0.1:8000/predict" />
+        </label>
+        <label class="field">
+          Confidence Threshold
+          <input id="confidenceInput" type="number" min="0.1" max="0.99" step="0.05" value="0.5" />
+          <small>Recommended: 0.45–0.60 for balanced precision/recall</small>
+        </label>
+        <label class="field" style="margin-top: 8px; flex-direction: row; align-items: center; gap: 8px;">
+          <input id="strictModeInput" type="checkbox" checked />
+          Strict Medicine-Only Filter
+        </label>
+      </div>
+
+      <div id="uploadMode" class="input-mode active-mode">
+        <label class="upload-drop" for="imageInput">
+          <span>Select an image file</span>
+          <input id="imageInput" type="file" accept="image/*" />
+        </label>
+      </div>
+
+      <div id="cameraMode" class="input-mode">
+        <div class="camera-actions">
+          <button id="startCameraBtn" class="btn ghost">Start Camera</button>
+          <button id="captureBtn" class="btn ghost" disabled>Capture Frame</button>
+          <button id="stopCameraBtn" class="btn ghost" disabled>Stop Camera</button>
+        </div>
+      </div>
+
+      <div class="actions-row">
+        <button id="detectBtn" class="btn primary">Detect Medicine Defects</button>
+      </div>
+      <p id="statusText" class="status">Ready.</p>
+    </section>
+
+    <section class="panel viewer-panel">
+      <div class="media-stack">
+        <video id="cameraView" autoplay playsinline></video>
+        <img id="previewImage" alt="Selected frame preview" />
+        <canvas id="overlayCanvas"></canvas>
+      </div>
+
+      <div class="results">
+        <div class="results-header">
+          <h2>Detection Results</h2>
+          <button id="toggleMetricsBtn" class="btn secondary" style="font-size: 0.85rem; padding: 6px 12px;">Show Class Metrics</button>
+        </div>
+        <pre id="resultsOutput">No inference yet.</pre>
+        <div id="classMetricsPanel" class="class-metrics" style="display: none;">
+          <h3>Model Performance by Class (%)</h3>
+          <table class="metrics-table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>mAP@50</th>
+                <th>mAP@50-95</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Overall</strong></td>
+                <td>87.71</td>
+                <td>86.05</td>
+                <td>89.35</td>
+                <td>55.54</td>
+              </tr>
+              <tr>
+                <td>BROKEN</td>
+                <td>83.65</td>
+                <td>87.19</td>
+                <td>86.63</td>
+                <td>47.70</td>
+              </tr>
+              <tr>
+                <td>Empty</td>
+                <td>77.85</td>
+                <td>78.04</td>
+                <td>79.97</td>
+                <td>41.92</td>
+              </tr>
+              <tr>
+                <td>OK</td>
+                <td>96.58</td>
+                <td>81.49</td>
+                <td>93.52</td>
+                <td>53.67</td>
+              </tr>
+              <tr>
+                <td>strip</td>
+                <td>92.75</td>
+                <td>97.47</td>
+                <td>97.29</td>
+                <td>78.87</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

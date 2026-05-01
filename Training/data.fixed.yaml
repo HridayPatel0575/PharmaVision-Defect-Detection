@@ -2,10 +2,12 @@ path: C:/Users/Admin/Desktop/Projects/PharmaVision Defect Detection/final_datase
 train: train/images
 val: valid/images
 test: test/images
-
 nc: 4
-names: ['BROKEN', 'Empty', 'OK', 'strip']
-
+names:
+- BROKEN
+- Empty
+- OK
+- strip
 roboflow:
   workspace: alzaraan
   project: final_dataset-hsvwf

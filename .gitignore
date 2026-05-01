@@ -1,66 +1,113 @@
-# OS
+# ===== OPERATING SYSTEM =====
 .DS_Store
+.AppleDouble
+.LSOverride
 Thumbs.db
+*.tmp
+*.bak
+*.backup
 
-# Python
+# ===== PYTHON =====
 __pycache__/
 *.py[cod]
 *.pyd
 *.pyo
 *.so
+*.egg
 *.egg-info/
 .eggs/
+dist/
+build/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .coverage
+.coverage.*
 htmlcov/
+.hypothesis/
+.tox/
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Virtual environments
+# ===== VIRTUAL ENVIRONMENTS =====
 .venv/
 venv/
 env/
 ENV/
+build/
+.env
 
-# Jupyter
+# ===== JUPYTER NOTEBOOKS =====
 .ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+.jupyter/
+.jupyter_events.log
 
-# IDE / Editor
+# ===== IDE / EDITORS =====
 .vscode/
 .idea/
 *.swp
+*.swo
+*~
+.vim/
+*.sublime-workspace
+*.sublime-project
+launch.json
+settings.json
 
-# Logs
+# ===== LOGS =====
 *.log
 logs/
+debug-logs/
 
-# ML / YOLO outputs
+# ===== ML / YOLO OUTPUTS =====
 runs/
 Training/runs/
-
-# DVC live artifacts
+Training/mlflow/
 Training/dvclive/
+*.runs
 
-# Model weights and large binaries
+# ===== MODEL WEIGHTS & LARGE BINARIES =====
 *.pt
 *.pth
+*.weights
 *.onnx
 *.engine
+yolov8*.pt
+yolo11*.pt
+!yolov8n.pt
+!backend/yolov8n.pt
 
-# Optional: ignore local dataset copies and exports
-# Uncomment if you do not want to version dataset files
-# final_dataset.v1i.yolov8/
-
-# Dataset artifacts (generated/large; keep out of git)
+# ===== DATASET ARTIFACTS =====
 final_dataset.v1i.yolov8/train/labels/
 final_dataset.v1i.yolov8/valid/images/
 final_dataset.v1i.yolov8/valid/labels/
 final_dataset.v1i.yolov8/**/labels.cache
+datasets/
+data/
+*.zip
+*.tar
+*.tar.gz
 
-# Environment files
+# ===== ENVIRONMENT & CONFIG =====
 .env
 .env.*
 !.env.example
+config.local.yaml
+config.local.json
 
-# ArchitectIQ graph cache
+# ===== VERSION CONTROL & DVC =====
+.dvc/
+dvc.lock
+.git/
+.gitkeep
+
+# ===== MISC =====
+.cache/
 .architectiq/
+node_modules/
+dist/
+build/
+*.swp
+*.swo
+*~
